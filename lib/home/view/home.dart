@@ -17,10 +17,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _beaches = [
     Beach(builder: (context) => const HeroSection()),
-    Beach(builder: (context) => ServeSection()),
-    Beach(builder: (context) => Hero2()),
-    Beach(builder: (context) => Westkapelle()),
-    Beach(builder: (context) => Zoutelande()),
+    Beach(builder: (context) => const ServeSection()),
+    Beach(builder: (context) => const FreeSection()),
+    // Beach(builder: (context) => Westkapelle()),
+    // Beach(builder: (context) => Zoutelande()),
   ];
 
   final _coastController = CoastController();
@@ -30,8 +30,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: NavBar(),
       body: Coast(
-        onPageChanged: (int) {
-          print('changed to $int');
+        onPageChanged: (pageNum) {
+          print('changed to $pageNum');
         },
         allowImplicitScrolling: true,
         scrollDirection: Axis.vertical,
@@ -44,40 +44,6 @@ class _HomeState extends State<Home> {
       extendBodyBehindAppBar: true,
     );
   }
-}
-
-///This is for transitions between crabs
-Widget textFlightShuttleBuilder(
-  BuildContext flightContext,
-  Animation<double> animation,
-  BeachTransitionDirection direction,
-  BuildContext fromCrabContext,
-  BuildContext? toCrabContext,
-) {
-  final curvedAnimation =
-      CurvedAnimation(parent: animation, curve: Curves.easeInOutQuart);
-  return Stack(
-    clipBehavior: Clip.none,
-    children: [
-      Positioned(
-        top: 0,
-        left: 0,
-        child: FadeTransition(
-          opacity: Tween<double>(begin: 1, end: 0).animate(curvedAnimation),
-          child: (fromCrabContext.widget as Crab).child,
-        ),
-      ),
-      if (toCrabContext != null)
-        Positioned(
-          top: 0,
-          left: 0,
-          child: FadeTransition(
-            opacity: curvedAnimation,
-            child: (toCrabContext.widget as Crab).child,
-          ),
-        ),
-    ],
-  );
 }
 
 class ServeSection extends StatelessWidget {
@@ -127,8 +93,8 @@ class ServeSection extends StatelessWidget {
       );
 }
 
-class Hero2 extends StatelessWidget {
-  const Hero2({Key? key}) : super(key: key);
+class FreeSection extends StatelessWidget {
+  const FreeSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -305,248 +271,6 @@ class _HeroState extends State<HeroSection> {
   }
 }
 
-class IssueSection extends StatelessWidget {
-  const IssueSection({Key? key}) : super(key: key);
-
-  final String theIssueText =
-      'True experts are constantly learning, and our product team found many companies overloaded with work and not enough talent to complete it. Meanwhile, there are many early-career professionals out there with great promise and not enough experience. As we iterated upon feature-based delivery, we found our experts generating more experts, and we learned how teaching-to-learn can culture innovation.';
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(64),
-      color: Colors.white,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const RotatedBox(
-                quarterTurns: 3,
-                child: Text('THE',
-                    style: TextStyle(
-                        fontFamily: 'Kreon',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                        color: Color(0xff000000))),
-              ),
-              const Text('ISSUE',
-                  style: TextStyle(
-                      fontFamily: 'Kreon',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 82,
-                      color: Color(0xff000000)))
-            ],
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width / 1.7,
-            child: SelectableText(
-              theIssueText,
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .headline1!
-                  .copyWith(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SolutionSection extends StatelessWidget {
-  const SolutionSection({Key? key}) : super(key: key);
-
-  final String solutionText =
-      "Empowering innovation & up-skilling through scalable feature-based delivery • Have a product you want to build? Our experts can build it for you, or they can teach you the business, design, and/or development through a real-life product so that you can teach others when building your own.";
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xffF7F9FF),
-      padding: const EdgeInsets.all(64),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('OUR MAGIC\n SOLUTION',
-                  style: TextStyle(
-                      fontFamily: 'Kreon',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 55,
-                      color: Color(0xff000000))),
-              Container(
-                  padding: const EdgeInsets.only(left: 20),
-                  width: MediaQuery.of(context).size.width / 3,
-                  child: SelectableText(
-                    solutionText,
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .headline1!
-                        .copyWith(fontSize: 20),
-                    textAlign: TextAlign.center,
-                  )),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class WorksSection extends StatelessWidget {
-  const WorksSection({Key? key}) : super(key: key);
-
-  final String number1Text =
-      // ignore: lines_longer_than_80_chars
-      'Whether you want us to build your vision, or you want to learn how to build it yourself, the first step is to get matched with a team that best suits your needs';
-  final String number2Text =
-      // ignore: lines_longer_than_80_chars
-      'As you work with our team you will be exposed to the state-of-the-art tools and approaches for building, delivering, and maintaining products.';
-  final String number3Text =
-      // ignore: lines_longer_than_80_chars
-      "Whether you'd like to continue having your product built for you, or you'd like to start building your own, we can support your next steps";
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(64),
-      child: Column(
-        children: [
-          const Text('HOW IT WORKS',
-              style: TextStyle(
-                  fontFamily: 'Kreon',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 60,
-                  color: Color(0xff000000))),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(50),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      height: 140,
-                      width: 140,
-                      decoration: const BoxDecoration(
-                        color: const Color(0xffEF9D13),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Text('1',
-                            style: TextStyle(
-                                fontFamily: 'Kreon',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 115,
-                                color: Color(0xffFFFFFF))),
-                      ),
-                    ),
-                    const Text('Meet Your Team',
-                        style:
-                            TextStyle(fontSize: 20, color: Color(0xff000000))),
-                    Container(
-                        margin: EdgeInsets.only(top: 20),
-                        width: MediaQuery.of(context).size.width / 5,
-                        child: SelectableText(
-                          number1Text,
-                          textAlign: TextAlign.start,
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .headline1!
-                              .copyWith(fontSize: 20),
-                        )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(50),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      height: 140,
-                      width: 140,
-                      decoration: const BoxDecoration(
-                        color: const Color(0xffEF9D13),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Text('2',
-                            style: TextStyle(
-                                fontFamily: 'Kreon',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 115,
-                                color: Color(0xffFFFFFF))),
-                      ),
-                    ),
-                    const Text('Collaborate',
-                        style:
-                            TextStyle(fontSize: 20, color: Color(0xff000000))),
-                    Container(
-                        margin: EdgeInsets.only(top: 20),
-                        width: MediaQuery.of(context).size.width / 5,
-                        child: SelectableText(
-                          number2Text,
-                          textAlign: TextAlign.start,
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .headline1!
-                              .copyWith(fontSize: 20),
-                        ))
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(50),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(20),
-                      height: 140,
-                      width: 140,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffEF9D13),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Text('3',
-                            style: TextStyle(
-                                fontFamily: 'Kreon',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 115,
-                                color: Color(0xffFFFFFF))),
-                      ),
-                    ),
-                    const Text("Grow",
-                        style:
-                            TextStyle(fontSize: 20, color: Color(0xff000000))),
-                    Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      width: MediaQuery.of(context).size.width / 5,
-                      child: SelectableText(
-                        number3Text,
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .headline1!
-                            .copyWith(fontSize: 20),
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class GoogleiFrame extends StatefulWidget {
   GoogleiFrame({Key? key}) : super(key: key);
 
@@ -596,93 +320,6 @@ class _GoogleiFrameState extends State<GoogleiFrame> {
       child: Padding(
         padding: const EdgeInsets.all(50),
         child: _iframeWidget,
-      ),
-    );
-  }
-}
-
-class Team extends StatelessWidget {
-  const Team({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height / 2,
-      width: MediaQuery.of(context).size.width,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: const Text(
-                'OUR TEAM',
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Image.asset('assets/avatar/gene.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          'Gene Yllanes',
-                          style:
-                              TextStyle(color: Colors.grey[700], fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Image.asset('assets/avatar/mahmoud.jpeg'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          'Mahmoud Garwallane',
-                          style:
-                              TextStyle(color: Colors.grey[700], fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Image.asset('assets/avatar/anna.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          'Anna Muzykina',
-                          style:
-                              TextStyle(color: Colors.grey[700], fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }
