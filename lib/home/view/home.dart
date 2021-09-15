@@ -94,7 +94,8 @@ class FirstSection extends StatelessWidget {
                       tag: 'container',
                       child: Container(
                         height: 100,
-                        child: Image.asset('assets/logo/1.png'),
+                        width: 300,
+                        child: Image.asset('assets/logo/2.png'),
                       ),
                     ),
                     Padding(
@@ -110,7 +111,10 @@ class FirstSection extends StatelessWidget {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Image.asset('assets/homepage_lines/1.png'),
+                  child: Container(
+                      height: 300,
+                      width: 50,
+                      child: Image.asset('assets/homepage_lines/1.png')),
                 ),
               ],
             ),
@@ -137,11 +141,12 @@ class SecondSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Crab(
-                      // flightShuttleBuilder: textFlightShuttleBuilder,
+                      flightShuttleBuilder: textFlightShuttleBuilder,
                       tag: 'container',
                       child: Container(
                         height: 100,
-                        child: Image.asset('assets/logo/2.png'),
+                        width: 300,
+                        child: Image.asset('assets/logo/3.png'),
                       ),
                     ),
                     Padding(
@@ -157,7 +162,10 @@ class SecondSection extends StatelessWidget {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Image.asset('assets/homepage_lines/2.png'),
+                  child: Container(
+                      height: 300,
+                      width: 50,
+                      child: Image.asset('assets/homepage_lines/2.png')),
                 ),
               ],
             ),
@@ -184,11 +192,12 @@ class ThirdSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Crab(
-                      // flightShuttleBuilder: textFlightShuttleBuilder,
+                      flightShuttleBuilder: textFlightShuttleBuilder,
                       tag: 'container',
                       child: Container(
                         height: 100,
-                        child: Image.asset('assets/logo/2.png'),
+                        width: 300,
+                        child: Image.asset('assets/logo/4.png'),
                       ),
                     ),
                     Padding(
@@ -204,7 +213,10 @@ class ThirdSection extends StatelessWidget {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Image.asset('assets/homepage_lines/2.png'),
+                  child: Container(
+                      height: 300,
+                      width: 50,
+                      child: Image.asset('assets/homepage_lines/3.png')),
                 ),
               ],
             ),
@@ -231,11 +243,12 @@ class FourthSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Crab(
-                      // flightShuttleBuilder: textFlightShuttleBuilder,
+                      flightShuttleBuilder: textFlightShuttleBuilder,
                       tag: 'container',
                       child: Container(
                         height: 100,
-                        child: Image.asset('assets/logo/2.png'),
+                        width: 300,
+                        child: Image.asset('assets/logo/5.png'),
                       ),
                     ),
                     Padding(
@@ -251,7 +264,10 @@ class FourthSection extends StatelessWidget {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Image.asset('assets/homepage_lines/2.png'),
+                  child: Container(
+                      height: 300,
+                      width: 50,
+                      child: Image.asset('assets/homepage_lines/4.png')),
                 ),
               ],
             ),
