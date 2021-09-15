@@ -8,12 +8,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:l2t_beta/app/app.dart';
 import 'package:l2t_beta/counter/counter.dart';
+import 'package:l2t_beta/home/home.dart';
 
 void main() {
   group('App', () {
-    testWidgets('renders CounterPage', (tester) async {
+    testWidgets('renders Home', (tester) async {
       await tester.pumpWidget(const App());
-      expect(find.byType(CounterPage), findsOneWidget);
+      expect(find.byType(Home), findsOneWidget);
     });
   });
 }
