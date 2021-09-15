@@ -30,10 +30,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: NavBar(),
       body: Coast(
-        onPageChanged: (pageNum) {
-          print('changed to $pageNum');
-        },
-        allowImplicitScrolling: true,
         scrollDirection: Axis.vertical,
         beaches: _beaches,
         controller: _coastController,
@@ -43,6 +39,85 @@ class _HomeState extends State<Home> {
       ),
       extendBodyBehindAppBar: true,
     );
+  }
+}
+
+class HeroSection extends StatefulWidget {
+  const HeroSection({Key? key}) : super(key: key);
+
+  @override
+  _HeroState createState() => _HeroState();
+}
+
+class _HeroState extends State<HeroSection> {
+  int rand = 0;
+  Image? image0;
+  Image? image1;
+  Image? image2;
+  Image? image3;
+  Image? image4;
+  Image? image5;
+  Image? image6;
+  @override
+  void initState() {
+    image0 = Image.asset('assets/logo/0.png');
+    image1 = Image.asset('assets/logo/1.png');
+    image2 = Image.asset('assets/logo/2.png');
+    image3 = Image.asset('assets/logo/3.png');
+    image4 = Image.asset('assets/logo/4.png');
+    image5 = Image.asset('assets/logo/5.png');
+    image6 = Image.asset('assets/logo/6.png');
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(image0!.image, context);
+    precacheImage(image1!.image, context);
+    precacheImage(image2!.image, context);
+    precacheImage(image3!.image, context);
+    precacheImage(image4!.image, context);
+    precacheImage(image5!.image, context);
+    precacheImage(image6!.image, context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        color: const Color(0xffF7F9FF),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Crab(
+                tag: 'container',
+                child: Container(
+                  height: 300,
+                  width: 500,
+                  child: InkWell(
+                    onTap: () {},
+                    onHover: (v) {
+                      setState(() {
+                        rand = Random().nextInt(6);
+                      });
+                    },
+                    child: Image.asset('assets/logo/$rand.png'),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 80.0),
+                child: Text('Bring your vision to life',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline1!
+                        .copyWith(fontSize: 50)),
+              )
+            ],
+          ),
+        ));
   }
 }
 
@@ -190,85 +265,6 @@ class Zoutelande extends StatelessWidget {
           ],
         ),
       );
-}
-
-class HeroSection extends StatefulWidget {
-  const HeroSection({Key? key}) : super(key: key);
-
-  @override
-  _HeroState createState() => _HeroState();
-}
-
-class _HeroState extends State<HeroSection> {
-  int rand = 0;
-  Image? image0;
-  Image? image1;
-  Image? image2;
-  Image? image3;
-  Image? image4;
-  Image? image5;
-  Image? image6;
-  @override
-  void initState() {
-    image0 = Image.asset('assets/logo/0.png');
-    image1 = Image.asset('assets/logo/1.png');
-    image2 = Image.asset('assets/logo/2.png');
-    image3 = Image.asset('assets/logo/3.png');
-    image4 = Image.asset('assets/logo/4.png');
-    image5 = Image.asset('assets/logo/5.png');
-    image6 = Image.asset('assets/logo/6.png');
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    precacheImage(image0!.image, context);
-    precacheImage(image1!.image, context);
-    precacheImage(image2!.image, context);
-    precacheImage(image3!.image, context);
-    precacheImage(image4!.image, context);
-    precacheImage(image5!.image, context);
-    precacheImage(image6!.image, context);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: MediaQuery.of(context).size.height,
-        color: const Color(0xffF7F9FF),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Crab(
-                tag: 'container',
-                child: Container(
-                  height: 300,
-                  width: 500,
-                  child: InkWell(
-                    onTap: () {},
-                    onHover: (v) {
-                      setState(() {
-                        rand = Random().nextInt(6);
-                      });
-                    },
-                    child: Image.asset('assets/logo/$rand.png'),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 80.0),
-                child: Text('Bring your vision to life',
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .headline1!
-                        .copyWith(fontSize: 50)),
-              )
-            ],
-          ),
-        ));
-  }
 }
 
 class GoogleiFrame extends StatefulWidget {
