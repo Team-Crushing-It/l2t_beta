@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _beaches = [
-    Beach(builder: (context) => const HeroSection()),
+    Beach(builder: (context) => const IntroHero()),
     Beach(builder: (context) => const ServeSection()),
     Beach(builder: (context) => const FreeSection()),
     // Beach(builder: (context) => Westkapelle()),
@@ -38,6 +38,41 @@ class _HomeState extends State<Home> {
         ],
       ),
       extendBodyBehindAppBar: true,
+    );
+  }
+}
+
+class IntroHero extends StatelessWidget {
+  const IntroHero({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      color: const Color(0xffF7F9FF),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Crab(
+              tag: 'container',
+              child: Container(
+                height: 300,
+                width: 500,
+                child: Image.asset('assets/logo/1.png'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 80.0),
+              child: Text('Bring your vision to life',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline1!
+                      .copyWith(fontSize: 50)),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -85,39 +120,40 @@ class _HeroState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height,
-        color: const Color(0xffF7F9FF),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Crab(
-                tag: 'container',
-                child: Container(
-                  height: 300,
-                  width: 500,
-                  child: InkWell(
-                    onTap: () {},
-                    onHover: (v) {
-                      setState(() {
-                        rand = Random().nextInt(6);
-                      });
-                    },
-                    child: Image.asset('assets/logo/$rand.png'),
-                  ),
+      height: MediaQuery.of(context).size.height,
+      color: const Color(0xffF7F9FF),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Crab(
+              tag: 'container',
+              child: Container(
+                height: 300,
+                width: 500,
+                child: InkWell(
+                  onTap: () {},
+                  onHover: (v) {
+                    setState(() {
+                      rand = Random().nextInt(6);
+                    });
+                  },
+                  child: Image.asset('assets/logo/$rand.png'),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 80.0),
-                child: Text('Bring your vision to life',
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .headline1!
-                        .copyWith(fontSize: 50)),
-              )
-            ],
-          ),
-        ));
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 80.0),
+              child: Text('Bring your vision to life',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline1!
+                      .copyWith(fontSize: 50)),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 

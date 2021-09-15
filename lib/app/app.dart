@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:l2t_beta/counter/counter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:l2t_beta/home/home.dart';
 import 'package:l2t_beta/l10n/l10n.dart';
 
@@ -18,6 +18,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        primaryTextTheme: TextTheme(
+          headline1: TextStyle(
+              fontFamily: GoogleFonts.montserrat().fontFamily,
+              color: Colors.black),
+        ),
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
       ),
       localizationsDelegates: [
