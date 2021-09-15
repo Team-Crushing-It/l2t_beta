@@ -1,12 +1,7 @@
-import 'dart:html';
-import 'dart:math';
-import 'dart:ui' as ui;
-
 import 'package:coast/coast.dart';
 import 'package:flutter/material.dart';
 import 'package:l2t_beta/home/widgets/widgets.dart';
 
-// ignore: use_key_in_widget_constructors
 class Home extends StatefulWidget {
   static Page page() => MaterialPage<void>(child: Home());
 
@@ -17,10 +12,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _beaches = [
     Beach(builder: (context) => const IntroHero()),
-    Beach(builder: (context) => const ServeSection()),
-    Beach(builder: (context) => const FreeSection()),
-    // Beach(builder: (context) => Westkapelle()),
-    // Beach(builder: (context) => Zoutelande()),
+    Beach(builder: (context) => const FirstSection()),
+    Beach(builder: (context) => const SecondSection()),
+    Beach(builder: (context) => const ThirdSection()),
+    Beach(builder: (context) => const FourthSection()),
   ];
 
   final _coastController = CoastController();
@@ -77,8 +72,8 @@ class IntroHero extends StatelessWidget {
   }
 }
 
-class ServeSection extends StatelessWidget {
-  const ServeSection({Key? key}) : super(key: key);
+class FirstSection extends StatelessWidget {
+  const FirstSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -124,8 +119,8 @@ class ServeSection extends StatelessWidget {
       );
 }
 
-class FreeSection extends StatelessWidget {
-  const FreeSection({Key? key}) : super(key: key);
+class SecondSection extends StatelessWidget {
+  const SecondSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -142,7 +137,101 @@ class FreeSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Crab(
-                      flightShuttleBuilder: textFlightShuttleBuilder,
+                      // flightShuttleBuilder: textFlightShuttleBuilder,
+                      tag: 'container',
+                      child: Container(
+                        height: 100,
+                        child: Image.asset('assets/logo/2.png'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Text('Free',
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .headline1!
+                              .copyWith(fontSize: 50)),
+                    )
+                  ],
+                ),
+                Crab(
+                  flightShuttleBuilder: textFlightShuttleBuilder,
+                  tag: 'line',
+                  child: Image.asset('assets/homepage_lines/2.png'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+}
+
+class ThirdSection extends StatelessWidget {
+  const ThirdSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              //dynamic gutters
+              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+            ),
+            child: Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Crab(
+                      // flightShuttleBuilder: textFlightShuttleBuilder,
+                      tag: 'container',
+                      child: Container(
+                        height: 100,
+                        child: Image.asset('assets/logo/2.png'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Text('Free',
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .headline1!
+                              .copyWith(fontSize: 50)),
+                    )
+                  ],
+                ),
+                Crab(
+                  flightShuttleBuilder: textFlightShuttleBuilder,
+                  tag: 'line',
+                  child: Image.asset('assets/homepage_lines/2.png'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+}
+
+class FourthSection extends StatelessWidget {
+  const FourthSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              //dynamic gutters
+              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+            ),
+            child: Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Crab(
+                      // flightShuttleBuilder: textFlightShuttleBuilder,
                       tag: 'container',
                       child: Container(
                         height: 100,
