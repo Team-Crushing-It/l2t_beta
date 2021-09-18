@@ -37,8 +37,28 @@ class _HomeState extends State<Home> {
   }
 }
 
-class IntroHero extends StatelessWidget {
+class IntroHero extends StatefulWidget {
   const IntroHero({Key? key}) : super(key: key);
+
+  @override
+  State<IntroHero> createState() => _IntroHeroState();
+}
+class _IntroHeroState extends State<IntroHero> {
+  Image? l2t;
+
+  @override
+  void initState() {
+    super.initState();
+    l2t = Image.asset('assets/logo/1.png');
+
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(l2t!.image, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +74,7 @@ class IntroHero extends StatelessWidget {
               child: Container(
                 height: 300,
                 width: 500,
-                child: Image.asset('assets/logo/1.png'),
+                child:l2t,
               ),
             ),
             Padding(
@@ -72,8 +92,32 @@ class IntroHero extends StatelessWidget {
   }
 }
 
-class FirstSection extends StatelessWidget {
+class FirstSection extends StatefulWidget {
   const FirstSection({Key? key}) : super(key: key);
+
+  @override
+  State<FirstSection> createState() => _FirstSectionState();
+}
+
+class _FirstSectionState extends State<FirstSection> {
+  Image? line;
+  Image? l2t;
+
+  @override
+  void initState() {
+    super.initState();
+    l2t = Image.asset('assets/logo/2.png');
+    line = Image.asset('assets/homepage_lines/1.png');
+
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(line!.image, context);
+    precacheImage(l2t!.image, context);
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -123,9 +167,32 @@ class FirstSection extends StatelessWidget {
       );
 }
 
-class SecondSection extends StatelessWidget {
+class SecondSection extends StatefulWidget {
   const SecondSection({Key? key}) : super(key: key);
 
+  @override
+  State<SecondSection> createState() => _SecondSectionState();
+}
+
+class _SecondSectionState extends State<SecondSection> {
+  Image? line;
+  Image? l2t;
+
+  @override
+  void initState() {
+    super.initState();
+    l2t = Image.asset('assets/logo/3.png');
+    line = Image.asset('assets/homepage_lines/2.png');
+
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(line!.image, context);
+    precacheImage(l2t!.image, context);
+  }
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -174,9 +241,32 @@ class SecondSection extends StatelessWidget {
       );
 }
 
-class ThirdSection extends StatelessWidget {
+class ThirdSection extends StatefulWidget {
   const ThirdSection({Key? key}) : super(key: key);
 
+  @override
+  State<ThirdSection> createState() => _ThirdSectionState();
+}
+
+class _ThirdSectionState extends State<ThirdSection> {
+  Image? line;
+  Image? l2t;
+
+  @override
+  void initState() {
+    super.initState();
+    l2t = Image.asset('assets/logo/4.png');
+    line = Image.asset('assets/homepage_lines/3.png');
+
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(line!.image, context);
+    precacheImage(l2t!.image, context);
+  }
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -197,7 +287,7 @@ class ThirdSection extends StatelessWidget {
                       child: Container(
                         height: 100,
                         width: 300,
-                        child: Image.asset('assets/logo/4.png'),
+                        child: l2t,
                       ),
                     ),
                     Padding(
@@ -216,7 +306,7 @@ class ThirdSection extends StatelessWidget {
                   child: Container(
                       height: 300,
                       width: 50,
-                      child: Image.asset('assets/homepage_lines/3.png')),
+                      child:line),
                 ),
               ],
             ),
@@ -225,9 +315,32 @@ class ThirdSection extends StatelessWidget {
       );
 }
 
-class FourthSection extends StatelessWidget {
+class FourthSection extends StatefulWidget {
   const FourthSection({Key? key}) : super(key: key);
 
+  @override
+  State<FourthSection> createState() => _FourthSectionState();
+}
+
+class _FourthSectionState extends State<FourthSection> {
+    Image? line;
+  Image? l2t;
+
+  @override
+  void initState() {
+    super.initState();
+    l2t = Image.asset('assets/logo/5.png');
+    line = Image.asset('assets/homepage_lines/4.png');
+
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(line!.image, context);
+    precacheImage(l2t!.image, context);
+  }
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -248,7 +361,7 @@ class FourthSection extends StatelessWidget {
                       child: Container(
                         height: 100,
                         width: 300,
-                        child: Image.asset('assets/logo/5.png'),
+                        child: l2t,
                       ),
                     ),
                     Padding(
@@ -267,7 +380,7 @@ class FourthSection extends StatelessWidget {
                   child: Container(
                       height: 300,
                       width: 50,
-                      child: Image.asset('assets/homepage_lines/4.png')),
+                      child: line),
                 ),
               ],
             ),
