@@ -223,6 +223,7 @@ class _SecondSectionState extends State<SecondSection> {
               horizontal: (MediaQuery.of(context).size.width / 12 + 48),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -317,6 +318,7 @@ class _ThirdSectionState extends State<ThirdSection> {
               horizontal: (MediaQuery.of(context).size.width / 12 + 48),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -402,6 +404,7 @@ class _FourthSectionState extends State<FourthSection> {
               horizontal: (MediaQuery.of(context).size.width / 12 + 48),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
