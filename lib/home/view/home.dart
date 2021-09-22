@@ -1,6 +1,8 @@
 import 'package:coast/coast.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:l2t_beta/home/widgets/widgets.dart';
+import 'package:l2t_beta/home/widgets/page_details.dart';
 
 class Home extends StatefulWidget {
   static Page page() => MaterialPage<void>(child: Home());
@@ -43,6 +45,7 @@ class IntroHero extends StatefulWidget {
   @override
   State<IntroHero> createState() => _IntroHeroState();
 }
+
 class _IntroHeroState extends State<IntroHero> {
   Image? l2t;
 
@@ -50,8 +53,6 @@ class _IntroHeroState extends State<IntroHero> {
   void initState() {
     super.initState();
     l2t = Image.asset('assets/logo/1.png');
-
-    
   }
 
   @override
@@ -74,7 +75,7 @@ class _IntroHeroState extends State<IntroHero> {
               child: Container(
                 height: 300,
                 width: 500,
-                child:l2t,
+                child: l2t,
               ),
             ),
             Padding(
@@ -108,8 +109,6 @@ class _FirstSectionState extends State<FirstSection> {
     super.initState();
     l2t = Image.asset('assets/logo/2.png');
     line = Image.asset('assets/homepage_lines/1.png');
-
-    
   }
 
   @override
@@ -129,6 +128,7 @@ class _FirstSectionState extends State<FirstSection> {
               horizontal: (MediaQuery.of(context).size.width / 12 + 48),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,6 +160,27 @@ class _FirstSectionState extends State<FirstSection> {
                       width: 50,
                       child: Image.asset('assets/homepage_lines/1.png')),
                 ),
+                PageDetails(
+                  decribing_text: [
+                    Text(
+                      "We build hardware,\nsoftware, and teams",
+                      style: GoogleFonts.montserrat(fontSize: 30),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "better, faster, cheaper",
+                      style: GoogleFonts.montserrat(
+                          fontSize: 30, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                  images: [
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png"
+                  ],
+                  images_bottom_text: ["Native Mobile", "Web", "UX/UI"],
+                )
               ],
             ),
           ),
@@ -183,8 +204,6 @@ class _SecondSectionState extends State<SecondSection> {
     super.initState();
     l2t = Image.asset('assets/logo/3.png');
     line = Image.asset('assets/homepage_lines/2.png');
-
-    
   }
 
   @override
@@ -193,6 +212,7 @@ class _SecondSectionState extends State<SecondSection> {
     precacheImage(line!.image, context);
     precacheImage(l2t!.image, context);
   }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -234,6 +254,27 @@ class _SecondSectionState extends State<SecondSection> {
                       width: 50,
                       child: Image.asset('assets/homepage_lines/2.png')),
                 ),
+                PageDetails(
+                  decribing_text: [
+                    Text(
+                      "We offer our services ",
+                      style: GoogleFonts.montserrat(fontSize: 30),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      "for free & paid",
+                      style: GoogleFonts.montserrat(
+                          fontSize: 30, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                  images: [
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png"
+                  ],
+                  images_bottom_text: ["Why?", "How?", "What?"],
+                )
               ],
             ),
           ),
@@ -257,8 +298,6 @@ class _ThirdSectionState extends State<ThirdSection> {
     super.initState();
     l2t = Image.asset('assets/logo/4.png');
     line = Image.asset('assets/homepage_lines/3.png');
-
-    
   }
 
   @override
@@ -267,6 +306,7 @@ class _ThirdSectionState extends State<ThirdSection> {
     precacheImage(line!.image, context);
     precacheImage(l2t!.image, context);
   }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -303,11 +343,23 @@ class _ThirdSectionState extends State<ThirdSection> {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Container(
-                      height: 300,
-                      width: 50,
-                      child:line),
+                  child: Container(height: 300, width: 50, child: line),
                 ),
+                PageDetails(
+                  decribing_text: [
+                    Text(
+                      "Designed for scalability",
+                      style: GoogleFonts.montserrat(fontSize: 30),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                  images: [
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png"
+                  ],
+                  images_bottom_text: ["Native Mobile", "Web", "UX/UI"],
+                )
               ],
             ),
           ),
@@ -323,7 +375,7 @@ class FourthSection extends StatefulWidget {
 }
 
 class _FourthSectionState extends State<FourthSection> {
-    Image? line;
+  Image? line;
   Image? l2t;
 
   @override
@@ -331,8 +383,6 @@ class _FourthSectionState extends State<FourthSection> {
     super.initState();
     l2t = Image.asset('assets/logo/5.png');
     line = Image.asset('assets/homepage_lines/4.png');
-
-    
   }
 
   @override
@@ -341,6 +391,7 @@ class _FourthSectionState extends State<FourthSection> {
     precacheImage(line!.image, context);
     precacheImage(l2t!.image, context);
   }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Container(
@@ -377,11 +428,23 @@ class _FourthSectionState extends State<FourthSection> {
                 Crab(
                   flightShuttleBuilder: textFlightShuttleBuilder,
                   tag: 'line',
-                  child: Container(
-                      height: 300,
-                      width: 50,
-                      child: line),
+                  child: Container(height: 300, width: 50, child: line),
                 ),
+                PageDetails(
+                  decribing_text: [
+                    Text(
+                      "Learn how L2T can best\nserve you",
+                      style: GoogleFonts.montserrat(fontSize: 30),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                  images: [
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png",
+                    "assets/activities_images/sample_img.png"
+                  ],
+                  images_bottom_text: ["Native Mobile", "Web", "UX/UI"],
+                )
               ],
             ),
           ),
