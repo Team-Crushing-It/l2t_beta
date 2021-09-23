@@ -6,12 +6,7 @@ import 'package:flutter/material.dart';
 class HoverLogo extends StatefulWidget {
   HoverLogo({
     Key? key,
-    required this.onTap,
-    required this.visible,
   }) : super(key: key);
-
-  final VoidCallback onTap;
-  final bool visible;
 
   @override
   _HoverLogoState createState() => _HoverLogoState();
@@ -26,9 +21,9 @@ class _HoverLogoState extends State<HoverLogo> {
 
   void startAnimate() {
     tick = Timer.periodic(
-      const Duration(milliseconds: 500),
+      const Duration(milliseconds: 1500),
       (timer) {
-        print(position);
+        // print(position);
         setState(() {
           if (position < 6) {
             position++;
@@ -48,7 +43,7 @@ class _HoverLogoState extends State<HoverLogo> {
   void initState() {
     super.initState();
 
-    imageBlk = Image.asset('assets/hoverLogo/black.png');
+    startAnimate();
   }
 
   @override
@@ -57,45 +52,9 @@ class _HoverLogoState extends State<HoverLogo> {
     super.dispose();
   }
 
-  // Caching the image
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    precacheImage(imageBlk!.image, context);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      onTap: () => widget.onTap(),
-      onHover: (hovering) {
-        // If NOT on homepage, run the hover trick. Else, ignore.
-        if (widget.visible) {
-          setState(() {
-            isHovering = hovering;
-          });
-          if (hovering) {
-            startAnimate();
-          } else {
-            stopAnimate();
-          }
-        }
-      },
-      child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 200),
-          // If NOT on the home page, then do hover check
-          child: widget.visible
-              //if hovering, do the animated logo else show just black
-              ? isHovering
-                  ? L2TLogo(position: position)
-                  : Container(width: 72, child: imageBlk)
-              // If home page, display L2T Logo at position
-              : L2TLogo(position: finalPosition.nextInt(6))),
-    );
+    return L2TLogo(position: position);
   }
 }
 
@@ -121,13 +80,13 @@ class _L2TLogoState extends State<L2TLogo> {
   void initState() {
     super.initState();
 
-    image1 = Image.asset('assets/hoverLogo/1.png');
-    image2 = Image.asset('assets/hoverLogo/2.png');
-    image3 = Image.asset('assets/hoverLogo/3.png');
-    image4 = Image.asset('assets/hoverLogo/4.png');
-    image5 = Image.asset('assets/hoverLogo/5.png');
-    image6 = Image.asset('assets/hoverLogo/6.png');
-    image7 = Image.asset('assets/hoverLogo/7.png');
+    image1 = Image.asset('assets/logo/1.png');
+    image2 = Image.asset('assets/logo/2.png');
+    image3 = Image.asset('assets/logo/3.png');
+    image4 = Image.asset('assets/logo/4.png');
+    image5 = Image.asset('assets/logo/5.png');
+    image6 = Image.asset('assets/logo/6.png');
+    image7 = Image.asset('assets/logo/0.png');
 
     images = [
       image1,
@@ -156,9 +115,8 @@ class _L2TLogoState extends State<L2TLogo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 72,
       child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 1000),
         child: images[widget.position],
       ),
     );

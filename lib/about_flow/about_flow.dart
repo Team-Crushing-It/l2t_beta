@@ -14,18 +14,18 @@ List<Page> onGenerateAboutPages(AboutState state, List<Page> pages) {
   switch (state) {
     case AboutState.usageComplete:
       return [
-        AboutWelcome.page(),
-        AboutUsage.page(),
-        AboutComplete.page(),
+        One.page(),
+        Two.page(),
+        Three.page(),
       ];
     case AboutState.welcomeComplete:
       return [
-        AboutWelcome.page(),
-        AboutUsage.page(),
+        One.page(),
+        Two.page(),
       ];
     case AboutState.initial:
     default:
-      return [AboutWelcome.page()];
+      return [One.page()];
   }
 }
 
@@ -44,75 +44,80 @@ class AboutFlow extends StatelessWidget {
   }
 }
 
-class AboutWelcome extends StatelessWidget {
-  static Page page() => MyPage<void>(child: AboutWelcome());
+class One extends StatelessWidget {
+  static Page page() => MyPage<void>(child: One());
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      backgroundColor: Colors.yellow,
-      appBar: AppBar(
-        leading: BackButton(
-          onPressed: () => context.flow<AboutState>().complete(),
+    return GestureDetector(
+      onHorizontalDragStart: (dragStartDetails) {
+        print('dragged: dragStartDetails');
+      },
+      child: Scaffold(
+        backgroundColor: Colors.yellow,
+        appBar: AppBar(
+          leading: BackButton(
+            onPressed: () => context.flow<AboutState>().complete(),
+          ),
+          title: const Text('Welcome'),
         ),
-        title: const Text('Welcome'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Stack(
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Stack(
+            children: [
+              Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Welcome Text',
+                      style: theme.textTheme.headline3,
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: FloatingActionButton(
+                  heroTag: _onboardingInfoHeroTag,
+                  backgroundColor: Colors.orange,
+                  child: const Icon(Icons.info),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Welcome Text',
-                    style: theme.textTheme.headline3,
-                  ),
-                ],
-              ),
+            FloatingActionButton(
+              heroTag: 0,
+              onPressed: () => context.flow<AboutState>().complete(),
+              child: const Icon(Icons.clear),
             ),
-            Positioned(
-              top: 10,
-              right: 10,
-              child: FloatingActionButton(
-                heroTag: _onboardingInfoHeroTag,
-                backgroundColor: Colors.orange,
-                child: const Icon(Icons.info),
-                onPressed: () {},
-              ),
+            const SizedBox(width: 8),
+            FloatingActionButton(
+              heroTag: 1,
+              onPressed: () {
+                context
+                    .flow<AboutState>()
+                    .update((_) => AboutState.welcomeComplete);
+              },
+              child: const Icon(Icons.arrow_forward_ios_rounded),
             ),
           ],
         ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 0,
-            onPressed: () => context.flow<AboutState>().complete(),
-            child: const Icon(Icons.clear),
-          ),
-          const SizedBox(width: 8),
-          FloatingActionButton(
-            heroTag: 1,
-            onPressed: () {
-              context
-                  .flow<AboutState>()
-                  .update((_) => AboutState.welcomeComplete);
-            },
-            child: const Icon(Icons.arrow_forward_ios_rounded),
-          ),
-        ],
       ),
     );
   }
 }
 
-class AboutUsage extends StatelessWidget {
-  static Page page() => MyPage<void>(child: AboutUsage());
+class Two extends StatelessWidget {
+  static Page page() => MyPage<void>(child: Two());
 
   @override
   Widget build(BuildContext context) {
@@ -175,8 +180,8 @@ class AboutUsage extends StatelessWidget {
   }
 }
 
-class AboutComplete extends StatelessWidget {
-  static Page page() => MyPage<void>(child: AboutComplete());
+class Three extends StatelessWidget {
+  static Page page() => MyPage<void>(child: Three());
 
   @override
   Widget build(BuildContext context) {

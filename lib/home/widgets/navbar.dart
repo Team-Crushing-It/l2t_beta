@@ -14,14 +14,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Row(
-        children: [
-          HoverLogo(
-            onTap: () {
-              print('tapped');
-            },
-            visible: true,
-          ),
-        ],
+        children: [],
       ),
       actions: [
         Padding(
