@@ -16,9 +16,6 @@ class PageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double max_width = MediaQuery.of(context).size.width;
-    print(max_width / 2.8);
-    print(((max_width / 10) * 3) + 40);
-
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
