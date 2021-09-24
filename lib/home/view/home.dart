@@ -125,10 +125,10 @@ class _FirstSectionState extends State<FirstSection> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               //dynamic gutters
-              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+              horizontal: 0,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -220,10 +220,10 @@ class _SecondSectionState extends State<SecondSection> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               //dynamic gutters
-              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+              horizontal: 0,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -315,10 +315,10 @@ class _ThirdSectionState extends State<ThirdSection> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               //dynamic gutters
-              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+              horizontal: 0,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -401,10 +401,10 @@ class _FourthSectionState extends State<FourthSection> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               //dynamic gutters
-              horizontal: (MediaQuery.of(context).size.width / 12 + 48),
+              horizontal: 0,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

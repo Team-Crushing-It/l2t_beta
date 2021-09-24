@@ -16,14 +16,15 @@ class PageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double max_width = MediaQuery.of(context).size.width;
+    print(max_width / 2.8);
+    print(((max_width / 10) * 3) + 40);
+
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             margin: EdgeInsets.only(bottom: 20),
-            width: max_width / 2.7,
             child: Column(
               children: decribing_text,
             ),
@@ -36,8 +37,7 @@ class PageDetails extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      width: (max_width / 9),
-                      height: 100,
+                      width: max_width / 10,
                       child: Image.asset(images![0]),
                     ),
                     Text(
@@ -52,8 +52,7 @@ class PageDetails extends StatelessWidget {
                   children: [
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
-                      width: max_width / 9,
-                      height: 100,
+                      width: max_width / 10,
                       child: Image.asset(images![1]),
                     ),
                     Text(
@@ -67,8 +66,7 @@ class PageDetails extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      width: max_width / 9,
-                      height: 100,
+                      width: max_width / 10,
                       child: Image.asset(images![2]),
                     ),
                     Text(
