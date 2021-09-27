@@ -92,15 +92,15 @@ class _StepPageIndicatorState extends State<StepPageIndicator> {
 
   bool isNext(int dotIndex) => _currentPageIndex < dotIndex;
 
-  _handlePageIndex() {
+  void _handlePageIndex() {
     setState(_readCurrentPageIndex);
   }
 
-  _readCurrentPageIndex() {
+  void _readCurrentPageIndex() {
     _currentPageIndex = widget.currentPageNotifier.value;
   }
 
-  _getStep(int index) {
+  Widget _getStep(int index) {
     if (isPrevious(index)) {
       return widget.previousStep ??
           Container(
